@@ -5,29 +5,33 @@ const GET_SUBJECTS = gql`
   query GetSubjects{
     messages{
           items{
-                 subject
+                 id,
+                 body,
+                 subject,
+                 
                 }       
               
               }
   }
 `
 ;
-
-
-
-
-
 export default function App() {
   const { loading, error, data } = useQuery(GET_SUBJECTS);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
+  console.log(data)
+ if (loading) return <p className='loading'>Loading...</p>;
+ if (error) return <p className='error-out'>Error : {error.message}</p>;
   return (
     <div className='container-box'>
-      <h2 className="title-of-header">✔My first Apollo app🤞</h2>
+      <h2 className="title-of-header"> Fecting Data with Graphical api and using react...!</h2>
       <div className="point-to-words">
       
-        {data.messages.items.map(eachMessage =>(<h3 class="App-link">=>{eachMessage.subject}</h3>))}
+        {data && data.messages.items.map(eachMessage =>(<p className="App-link">id:{eachMessage.id}
+        <p>subject:{eachMessage.subject}</p>
+        <p>Body:{eachMessage.body}</p>
+        <hr/></p>
+        
+        
+        ))}
         </div>
     </div>
   );

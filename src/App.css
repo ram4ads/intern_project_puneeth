@@ -1,16 +1,18 @@
 .container-box{
-  background-image: linear-gradient(to right,#D2F6C5 ,#290001);
-
+  background-image: linear-gradient(to right,#D2F6C5 , green);
+  height: 100vh;
+  width: 100%;
 }
-
-
-
-
-
 .title-of-header{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 36px;
-  color: brown;
+  color: red;
+  text-align: center;
+  padding: 15px;
+  
+}
+.loading{
+  
   text-align: center;
 }
 .point-to-words{
@@ -19,4 +21,18 @@
   color: #354649;
   font-weight: 400;
   font-style: oblique;
+  
+  background-color: #D2F6C5;
+  padding: 30px;
+  border-radius: 100px;
+  border:5px solid red;
+  
+}
+.App-link{
+  color: black;
+  font-weight: bold;
+}
+.error-out{
+  color: rgb(14, 1, 1);
+  font-size: 50px;
 }
