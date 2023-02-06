@@ -23,7 +23,7 @@ export default function App() {
   return (
     <div className='container-box'>
       <h2 className="title-of-header"> Fecting Data with Graphical api and using react...!</h2>
-      <div className="point-to-words">
+      <li className="point-to-words">
       
         {data && data.messages.items.map(eachMessage =>(<p className="App-link">id:{eachMessage.id}
         <p>subject:{eachMessage.subject}</p>
@@ -32,7 +32,7 @@ export default function App() {
         
         
         ))}
-        </div>
+        </li>
     </div>
   );
 }
