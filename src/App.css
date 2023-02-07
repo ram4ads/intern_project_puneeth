@@ -1,5 +1,5 @@
 .container-box{
-  background-image: linear-gradient(to right,#D2F6C5 , green);
+  background-image: linear-gradient(red, white, green);
   height: 100vh;
   width: 100%;
 }
@@ -12,8 +12,17 @@
   
 }
 .loading{
-  
+
   text-align: center;
+  font-weight: bold;
+  font-size: 45px;
+  
+}
+.spinner-class{
+  width: 75px;
+  height: 75px;
+  color: green;
+  margin-top: 350px;
 }
 .point-to-words{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,7 +31,7 @@
   font-weight: 400;
   font-style: oblique;
   list-style-type: none;
-  background-color: #D2F6C5;
+  background-color: burlywood;
   padding: 30px;
   border-radius: 100px;
   border:5px solid rgb(238, 252, 41);
@@ -42,4 +51,12 @@
 .content{
   color: brown;
   font-weight: bold;
+}
+.loader-container {
+     height: 150vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+  
 }

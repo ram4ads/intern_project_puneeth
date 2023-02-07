@@ -1,7 +1,9 @@
 import { useQuery, gql } from '@apollo/client';
+import {TailSpin} from 'react-loader-spinner';
+
 import "./App.css"
 
-const GET_SUBJECTS = gql`
+const CONTENT_VALUES = gql`
   query GetSubjects{
     messages{
           items{
@@ -16,14 +18,21 @@ const GET_SUBJECTS = gql`
 `
 ;
 export default function App() {
-  const { loading, error, data } = useQuery(GET_SUBJECTS);
-  console.log(data)
- if (loading) return <p className='loading'>Loading...</p>;
+  const {loading,error, data } = useQuery(CONTENT_VALUES);
+  
+ if(loading) return(
+    <div className="loader-container">
+      <TailSpin  className='spinner-class'  visible={true} ariaLabel='tail-spin-loading'/>
+      <p className='loading'>Loading..!</p>
+    </div>
+ );
+  
  if (error) return <p className='error-out'>Error : {error.message}</p>;
   return (
     <div className='container-box'>
-      <h2 className="title-of-header"> Fecting Data with Graphical api and using react...!</h2>
+     <h2 className="title-of-header">✔ Fecting Data with Graphical api and using react...!😘</h2>
       <li className="point-to-words">
+      
       
         {data && data.messages.items.map(eachMessage =>(<><p className="App-link">id:{eachMessage.id}</p>
         <p className='subject'>subject:{eachMessage.subject}</p>
