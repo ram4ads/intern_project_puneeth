@@ -25,10 +25,10 @@ export default function App() {
       <h2 className="title-of-header"> Fecting Data with Graphical api and using react...!</h2>
       <li className="point-to-words">
       
-        {data && data.messages.items.map(eachMessage =>(<p className="App-link">id:{eachMessage.id}
-        <p>subject:{eachMessage.subject}</p>
-        <p>Body:{eachMessage.body}</p>
-        <hr/></p>
+        {data && data.messages.items.map(eachMessage =>(<><p className="App-link">id:{eachMessage.id}</p>
+        <p className='subject'>subject:{eachMessage.subject}</p>
+        <p className='content'>Body:{eachMessage.body}</p>
+        <hr/></>
         
         
         ))}

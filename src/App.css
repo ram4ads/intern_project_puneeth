@@ -21,7 +21,7 @@
   color: #354649;
   font-weight: 400;
   font-style: oblique;
-  
+  list-style-type: none;
   background-color: #D2F6C5;
   padding: 30px;
   border-radius: 100px;
@@ -35,4 +35,11 @@
 .error-out{
   color: rgb(14, 1, 1);
   font-size: 50px;
+}
+.subject{
+  color: blue;
+}
+.content{
+  color: brown;
+  font-weight: bold;
 }
