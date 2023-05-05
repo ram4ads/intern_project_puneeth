@@ -1,0 +1,40 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 80px;
+    border-bottom: 1px solid grey;
+}
+ul {
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+li {
+    font-size: 20px;
+    padding: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.body {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.head {
+    font-size: 45px;
+    font-weight: bold;
+}
+p {
+    font-size: 18px;
+}
+button {
+    padding: 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    background-color: dodgerblue;
+}
