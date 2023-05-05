@@ -1,0 +1,10 @@
+.form-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    text-align: center;
+    color: black;
+}
