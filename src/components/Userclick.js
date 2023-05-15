@@ -1,35 +1,36 @@
-import React from 'react'
+import React,{useContext} from 'react';
+import { ClickContext } from '../App';
 import axios from 'axios';
-
+import '../App.css'
 function Userclick(){
+    const {hitLinkOne, setHitLinkOne} = useContext(ClickContext)
+    const {hitLinkTwo, setHitLinkTwo} = useContext(ClickContext)
     const handleClickOne=()=>{
-        const date = new Date();
+        setHitLinkOne(hitLinkOne + 1)
         const output = {
             link:"link 1",
-            click: 1,
-            date,
             
         }
+        console.log(hitLinkOne)
         axios.post('http://localhost:8000/api/value', output)
         .then(()=>{
-            console.log('user Clicked Successfull')
+            console.log('user Clicked-one Successfull')
         }).catch(error=>{
             console.log("getting error on frontend", error)
         })
     }
 
     const handleClickTwo=()=>{
-        const date = new Date();
+        setHitLinkTwo(hitLinkTwo + 1)
         const output = {
             link:"link 2",
-            click: 1,
-            date,
         
             
         }
+        console.log(output)
         axios.post('http://localhost:8000/api/value', output)
         .then(()=>{
-            console.log('user Clicked Successfull')
+            console.log('user Clicked-two Successfull')
         }).catch(error=>{
             console.log("getting error on frontend", error)
         })
@@ -37,12 +38,18 @@ function Userclick(){
 
 
     return(
-        <>
         
-            <button onClick={handleClickOne}>Click-one</button><br/>
-            <button onClick={handleClickTwo}>Click-two</button>
-        
-        </>
+        <ClickContext.Consumer>
+            {value =>
+            <div>
+                <h1>React-JS</h1>
+                <button className="glow-on-hover" onClick={handleClickOne}>Click-one <span>{hitLinkOne}</span></button><br/>
+                <button className="glow-on-hover" onClick={handleClickTwo}>Click-two <span>{hitLinkTwo}</span></button>
+            </div>
+            }
+        </ClickContext.Consumer>
+       
+       
     )
 }
 export default Userclick;

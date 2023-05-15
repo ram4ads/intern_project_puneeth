@@ -20,7 +20,7 @@ app.get('/', (req, res) =>{
 }) 
 
 app.get('/value', function(req,res){
-    db.query('SELECT * from content',
+    db.query('SELECT link, date, COUNT(*) AS click_count FROM content GROUP BY link, date;',
     (error,result)=>{
         if(error){
             return res.json(error);
@@ -31,9 +31,9 @@ app.get('/value', function(req,res){
 })
 
 app.post('/api/value', (req, res)=>{
-    const{link, click, date, id} = req.body; 
-    db.query('INSERT INTO content (link, click, date) VALUES (?,?,?)',
-    [link, click, date],
+    const{link, date} = req.body; 
+    db.query('INSERT INTO content (link,  date) VALUES (?,now())',
+    [link,  date],
     (error, data)=>{
         if(error){
             console.log("backend error", error)
