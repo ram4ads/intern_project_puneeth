@@ -3,7 +3,9 @@ let aboutEl = document.getElementById('about')
 let contactEl = document.getElementById('contact')
 let rootEl = document.getElementById('root')
 
-
+let valueEl = 0 
+let valueE2 = 0
+let valueE3 = 0
 homeEl.addEventListener("click", function(){
     rootEl.textContent="";
     let h1El = document.createElement("h1")
@@ -11,6 +13,8 @@ homeEl.addEventListener("click", function(){
     let pEl = document.createElement("p")
     pEl.textContent="it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.";
     h1El.id='homeEl'
+    valueEl++;
+    alert(`Button clicked ${valueEl} times`)
     rootEl.appendChild(h1El)
     rootEl.appendChild(pEl)
 })
@@ -22,6 +26,8 @@ aboutEl.addEventListener("click", function(){
     let pEl = document.createElement("p")
     pEl.textContent="it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.";
     h1El.id='aboutEl'
+    valueE2++;
+    alert(`Button clicked ${valueE2} times`)
     rootEl.appendChild(h1El)
     rootEl.appendChild(pEl)
     
@@ -38,6 +44,8 @@ contactEl.addEventListener("click", function(){
     inputEl.placeholder="Firstname";
     inputEl.style.margin="5px";
     let brEl = document.createElement('br')
+    valueE3++;
+    alert(`Button Clicked ${valueE3} times`)
     inputEl.appendChild(brEl)
     rootEl.appendChild(inputEl)
 
