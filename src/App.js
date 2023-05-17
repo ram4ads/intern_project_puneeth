@@ -1,6 +1,7 @@
 import React, {createContext, useState} from 'react' 
 import Userclick from './components/Userclick'
 import Charts from './components/charts'
+import PieChart from './components/PieChart'
 
 export const ClickContext = createContext()
 function App(){
@@ -17,6 +18,8 @@ function App(){
                 <Userclick/>
                 <hr/>
                 <Charts/>
+                <hr/>
+                <PieChart/>
                 </center>
             </ClickContext.Provider>
             

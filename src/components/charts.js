@@ -27,16 +27,40 @@ function Charts() {
       }
     };
     fetchedData();
-  });
+  }, []);
+
+
+  /*const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const time = payload[0].payload.hour;
+      
+      
+  
+      return (
+        <div className="custom-tooltip">
+          <p>{`Time: ${time}`}</p>
+          
+          
+          
+        </div>
+      );
+    }
+  
+    return null;
+  };
+*/
 
   return (
-    <BarChart width={800} height={400} data={barData}>
+    <BarChart width={800} height={500} data={barData}>
       <CartesianGrid strokeDasharray="3 3" />
-       <XAxis dataKey="date" />
+       <XAxis dataKey="Time_between"/>
        <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="click_count" fill="blue" />
+      <Bar dataKey="link1" fill="Maroon" barSize={18}/>
+      <Bar dataKey="link2" fill="Teal" barSize={18}/>
+     
+      
     </BarChart>
   );
 }

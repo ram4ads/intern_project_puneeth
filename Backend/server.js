@@ -20,12 +20,23 @@ app.get('/', (req, res) =>{
 }) 
 
 app.get('/value', function(req,res){
-    db.query('SELECT link, date, COUNT(*) AS click_count FROM content GROUP BY link, date;',
+    db.query("SELECT CONCAT(DATE_FORMAT(date, '%H:00'), '-', DATE_FORMAT(DATE_ADD(date, INTERVAL 1 HOUR), '%H:00')) AS Time_between, SUM(CASE WHEN link = 'link 1' THEN 1 ELSE 0 END) AS link1, SUM(CASE WHEN link = 'link 2' THEN 1 ELSE 0 END) AS link2 FROM userdata.content WHERE DATE(date) = '2023-05-12' GROUP BY Time_between ORDER BY Time_between LIMIT 0, 1000;",
     (error,result)=>{
         if(error){
             return res.json(error);
         }
         return res.json(result);
+    }
+    )
+})
+
+app.get('/poll', function(req,res){
+    db.query("SELECT link, count(link) as count from content group by link",
+    (error,result)=>{
+        if(error){
+            return res.json(error);
+        }
+        return res.json(result)
     }
     )
 })
