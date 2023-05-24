@@ -1,26 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext} from 'react';
+import {FormDataContext } from '../../App';
 import './FormReg.css'
 
+
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    gender: '',
-    PhoneNumber:'',
-    email: '',
-    password: '',
-    confirmpassword: '',
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    console.log("Save:", formData)
-  }
+   const {formData,handleChange,handleClickTab} = useContext(FormDataContext);
 
   const isPasswordMatch = () => {
     const { password, confirmpassword } = formData;
@@ -30,7 +14,8 @@ const RegistrationForm = () => {
   return (
     <div className='form-contianer'>
         <h1>Passport Registration</h1>
-    <form onSubmit={handleSubmit}>
+    
+    <form >
         <input
           type="text"
           name="firstName"
@@ -81,7 +66,7 @@ const RegistrationForm = () => {
       
       <br />
       <input
-          type="tel"
+          type="number"
           name="PhoneNumber"
           value={formData.PhoneNumber}
           onChange={handleChange}
@@ -117,17 +102,18 @@ const RegistrationForm = () => {
           value={formData.confirmpassword}
           onChange={handleChange}
           placeholder='confirm Password '
-          
+          required
         />
         {!isPasswordMatch() && formData.confirmpassword !== '' && (
         <p className='errormsg'>Passwords do not match.</p>
       )}
         <br/>
         
-         <button type="submit" className='glow-on-hover'>Save</button>
-         <button type="button" className='glow-on-hover'>Next</button>
+         
+         <button type="button" className='glow-on-hover' onClick={handleClickTab}>Next</button>
      
     </form>
+  
     </div>
   );
 };

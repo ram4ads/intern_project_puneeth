@@ -1,0 +1,22 @@
+.imagecontianer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffff;
+    border-radius: 15px;
+    width: auto;
+    height: auto;
+    padding: 5px;
+}
+.selectimagecontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imagecss{
+    width: 300px;
+    height: 150pxpx;
+    padding: 5px;
+}
