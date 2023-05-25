@@ -1,5 +1,5 @@
 import React, { useContext} from 'react';
-import {FormDataContext } from '../../App';
+import { FormDataContext } from '../Signup/Signup';
 import './FormReg.css'
 
 
@@ -23,6 +23,7 @@ const RegistrationForm = () => {
           onChange={handleChange}
           placeholder='Firstname '
           pattern="[A-Za-z ]+"
+          className='input-form'
           required
         />
      
@@ -35,6 +36,7 @@ const RegistrationForm = () => {
           onChange={handleChange}
           placeholder='LastName '
           pattern="[A-Za-z ]+"
+          className='input-form'
           required
         />
       
@@ -48,6 +50,7 @@ const RegistrationForm = () => {
           max='2023-05-15'
           onChange={handleChange}
           placeholder='Date of birth '
+          className='input-form'
         />
       
       <br />
@@ -57,6 +60,7 @@ const RegistrationForm = () => {
           value={formData.gender}
           onChange={handleChange}
           placeholder='Gender check the list'
+          className='input-form'
         >
           <option value="">Select</option>
           <option value="male">Male</option>
@@ -72,6 +76,7 @@ const RegistrationForm = () => {
           onChange={handleChange}
           placeholder='Mobile Number '
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          className='input-form'
         />
       <br/>
         <input
@@ -81,6 +86,7 @@ const RegistrationForm = () => {
           onChange={handleChange}
           placeholder='Email '
           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+          className='input-form'
           required
         />
       
@@ -92,6 +98,7 @@ const RegistrationForm = () => {
           onChange={handleChange}
           placeholder='Password '
           minLength="9"
+          className='input-form'
           required
         />
       
@@ -102,6 +109,7 @@ const RegistrationForm = () => {
           value={formData.confirmpassword}
           onChange={handleChange}
           placeholder='confirm Password '
+          className='input-form'
           required
         />
         {!isPasswordMatch() && formData.confirmpassword !== '' && (

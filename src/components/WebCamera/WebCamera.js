@@ -1,5 +1,5 @@
 import React, { useRef, useState, useContext} from 'react';
-import { FormDataContext } from '../../App';
+import { FormDataContext } from '../Signup/Signup';
 import './WebCamera.css'
 const Webcameras = () => {
   const videoRef = useRef();

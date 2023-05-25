@@ -1,6 +1,6 @@
 import React, { useRef, useContext} from 'react';
 import SignatureCanvas from 'react-signature-canvas';
-import { FormDataContext } from '../../App';
+import { FormDataContext } from '../Signup/Signup';
 import './Signature.css'
 
 

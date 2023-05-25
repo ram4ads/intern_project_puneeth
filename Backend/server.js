@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const schema = require('./schema')
-const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt')
 const app = express() 
 app.use(cors())
 app.use(express.json({limit: "30mb"})) 
@@ -30,6 +30,8 @@ app.post('/userData', async(req,res)=>{
         if(password !== confirmpassword){
             res.status(400).send('Password does not match')
         }
+        const hashedPassword =await bcrypt.hash(password, 10);
+        const hashedConfirmPassword = await bcrypt.hash(confirmpassword, 10);
         const newUser= new schema({
             firstName,
             lastName,
@@ -37,8 +39,8 @@ app.post('/userData', async(req,res)=>{
             gender,
             PhoneNumber,
             email,
-            password,
-            confirmpassword,
+            password:hashedPassword,
+            confirmpassword:hashedConfirmPassword,
             userImage,
             userSignature,
             userCapture
@@ -50,6 +52,46 @@ app.post('/userData', async(req,res)=>{
         console.log(error)
     }
 })
+
+app.post('/finalData', async(req,res) => {
+  const id = req.body.id  
+
+  const user = await schema.findById(id)
+  return res.status(200).json({message : user})
+  console.log(id)
+  
+})
+
+//create login page//
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    const password1 = password.toString();
+    try {
+      const user = await schema.findOne({ email });
+  
+      if (!user) {
+        return res.status(401).json({ message: 'Invalid email' });
+      }
+  
+      const isPasswordValid = await bcrypt.compare(password1, user.password);
+  
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Invalid  password' });
+      }
+  
+      // Successful login
+      res.status(200).json({ message: user._id });
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ message: 'An error occurred. Please try again later.' });
+    }
+  });
+  
+
+
+
+
+
 
 app.listen(0969, ()=>{
     console.log('listening')

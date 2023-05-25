@@ -1,5 +1,5 @@
 import React,{useState, useContext} from "react";
-import { FormDataContext } from "../../App";
+import { FormDataContext } from "../Signup/Signup";
 import './ImageUploader.css'
 
 const ImageUploader=()=>{
