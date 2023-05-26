@@ -1,0 +1,40 @@
+.grid-page{
+    height: 100vh;
+    text-align: center;
+    overflow-y: auto;
+    background-color: #7a00ff;
+    padding-top: 40px;
+}
+.gird-cotainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    color: white;
+}
+.box-css{
+    height: 100px;
+  width: 200px;
+  margin-bottom: 10px;
+  border: 1px solid #000000;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: #ffffff 0px 5px 15px;
+  padding: 5px;
+  color: white;
+  font-size: 15px;
+  margin: 5px;
+}
+.image-css{
+    width: 75px;
+    height: 55px;
+}
+.paragraphing{
+    color: antiquewhite;
+}

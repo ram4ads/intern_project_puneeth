@@ -1,0 +1,30 @@
+.infinit-contianer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px;
+    border-style: groove;
+    border-color: blue;
+    padding: 5px;
+    margin: 5px;
+}
+.infinite-maincontianer{
+    
+}
+.image-gallery{
+    width: 150px;
+    height: 150px
+}
+.spinner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.loading{
+    font-size: 25px;
+    color: blue;
+}
