@@ -1,0 +1,37 @@
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.activePage {
+    color: red;
+  }
+
+.pageButton{
+    border: 1px solid black;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    color: blueviolet;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-action{
+    height: 40px;
+    width: 5%;
+    border-radius: 5px;
+    border: 1px dotted black;
+
+}
+.button-action:active{
+    color: blue;
+}
