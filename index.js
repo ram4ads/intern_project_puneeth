@@ -237,8 +237,8 @@ const newCommunity = async(email, passwordOne,community)=>{
   }
 }
 for (const communityUrl of targetId) {
-  const email = "puneethg@italentdigital.com"
-  const passwordOne = "@Aa8142424331"
+  const email = ""
+  const passwordOne = ""
    if (communityUrl.startsWith("https://staging.community.fabric.microsoft")) {
         console.log("Skipping execution for", communityUrl);
         continue; // Skip this iteration and continue to the next iteration
@@ -268,8 +268,8 @@ newCommunity(email,passwordOne);
     //await driver.quit();
   }
 }
-const url = 'https://staging.community.fabric.microsoft.com/t5/user/loginpage';
-const username = 'SmartConX_Test';
-const password = 'A!s2d3f4';
+const url = '';
+const username = '';
+const password = '';
 
 login(url, username, password);

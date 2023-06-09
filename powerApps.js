@@ -122,9 +122,9 @@ const chrome = require('selenium-webdriver/chrome');
     }
 
 }
-const url ="https://powerusers-staging.microsoft.com/t5/ICS-Forums/Puneet-7-6-2023/td-p/98261"
-const email='puneethg@italentdigital.com'
-const password='@Aa8142424331'
+const url =""
+const email=''
+const password=''
 //const postMessage = "This is a child reply message."
 
 powerApps(url, email,password)
