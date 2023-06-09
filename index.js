@@ -127,6 +127,7 @@ const tableRows = await driver.findElements(By.css("#tblHTML tbody tr"))
 
 //iterate through the each row 
 
+const targetId = [];
 for(let row of tableRows){
   //find the status cell in each row  
   const statusCell = await row.findElement(By.xpath('.//td[2]'))
@@ -136,43 +137,125 @@ for(let row of tableRows){
     await driver.sleep(2000)
     const targetMessageLink = await row.findElement(By.xpath(".//td[4]/a")) 
     await driver.executeScript("arguments[0].scrollIntoViewIfNeeded();", targetMessageLink);
-    await targetMessageLink.click() 
+    const targetLink = await targetMessageLink.getAttribute('href');
+    targetId.push(targetLink)
     await driver.sleep(3000)
-
-   const divElement  = await driver.findElement(By.className("lia-menu-bar-buttons"))
-   const replyButton = await divElement.findElement(By.css(".lia-button-primary"))
-
-   await driver.executeScript("arguments[0].scrollIntoView(true);", divElement);
-
-   
-
-//Scrolling element 
-   
-
-   //close the modal dialog box  
-
-   try{
-    const modalBox  = await driver.findElement("statusModal")
-    await driver.executeScript("arguments[0].style.display = 'none'", modalBox)
-   }catch(error){
-    // Modal dialog not found, continue with the click action
-   }
-
-   //Click replt button
-   await replyButton.click()
-   //wait for a while to see the button click action 
-   await driver.sleep(3000);
-   
-   await driver.navigate().back()
-   await driver.sleep(1000)
-  
-   
-
-
-
   }
 }
+  
+console.log(targetId)
 
+
+const newCommunity = async(email, passwordOne,community)=>{
+  try{
+    await driver.get(community);  //get the driver community  
+
+    const replyButton = await driver.findElement(By.xpath("//span[contains(@class, 'message-reply')]/a"));
+    await replyButton.click();
+
+    // page accessing title whether it is naviagting to signup or going to reply 
+
+    const pageTitle = await driver.getTitle();
+    console.log("Page Title:", pageTitle) 
+
+    // for signup the value  
+
+    if(pageTitle === "Sign in to your account"){
+      //waiting untill signin page loads 
+
+      await driver.wait(until.elementLocated(By.css('input[name="loginfmt"]')))
+
+      //accesing email and password send keys 
+      const emailInput = await driver.findElement(By.css('input[name="loginfmt"]'))
+      await emailInput.sendKeys(email)
+
+      //click on next buttom 
+
+      const nextButton = await driver.findElement(By.id("idSIButton9"))
+      await nextButton.click();
+      await driver.sleep(2000); 
+
+      await driver.wait(until.elementLocated(By.css('input[name="passwd"]')))
+      const password = await driver.findElement(By.css('input[name="passwd"]'))
+      await password.sendKeys(passwordOne)
+      await driver.sleep(1000) 
+
+      const submitButton = await driver.findElement(By.id('idSIButton9'))
+      await submitButton.click();
+      await driver.sleep(2000);  
+
+      await driver.wait(unitl.elementLocated(By.css('input[id="idSIButton9')))
+      await driver.sleep(14000) 
+      const yesButton = await driver.findElement(By.id('idSIButton9'))
+      await yesButton.click() 
+      await driver.sleep(3000)
+
+    }
+    const afterLoginTitle = await driver.getTitle();
+    console.log('Page Title:', afterLoginTitle)
+
+    if("Complete your Profile".includes(afterLoginTitle)){
+
+      const username = await driver.findElement(By.id("lia-login"))
+      await driver.sleep(2000);
+      await username.sendKeys("Puneet")
+      await driver.sleep(2000) 
+
+      const clickCheckBox = await driver.findElement(By.id('lia-userAcceptsTermsOfService'));
+      await clickCheckBox.click(); 
+
+      const submitformButton = await driver.findElement(By.id('submitContext_0'));
+      await submitformButton.click() 
+      await driver.sleep(2000)
+
+    }
+//accssing body in the other community for the first reply  
+    const dataAndTime = new Date()
+    const body = await driver.findElement(By.id('mceu_38'))
+    const iframe = await body.findElement(By.tagName('iframe'));
+    await driver.switchTo().frame(iframe);
+    const paragraphElement  = await driver.findElement(By.tagName('p'));
+    await paragraphElement.sendKeys(`Child reply by puneet ${dataAndTime}`);
+    await driver.sleep(2000);
+    await driver.switchTo().defaultContent(); 
+
+    //submit reply  
+    const postBtn = await driver.findElement(By.id("submitContext_1"));
+    await postBtn.click();
+    await driver.sleep(3000);
+    
+
+    const replyButtonOne = await driver.findElement(
+    By.xpath("//span[contains(@class, 'message-reply')]/a")
+
+    );
+    await replyButtonOne.click();
+
+
+  }finally{
+    console.log("New Community reply")
+  }
+}
+for (const communityUrl of targetId) {
+  const email = "puneethg@italentdigital.com"
+  const passwordOne = "@Aa8142424331"
+   if (communityUrl.startsWith("https://staging.community.fabric.microsoft")) {
+        console.log("Skipping execution for", communityUrl);
+        continue; // Skip this iteration and continue to the next iteration
+
+    }
+   await newCommunity(email,passwordOne, communityUrl);
+
+}
+
+newCommunity(email,passwordOne);
+
+
+   
+
+   
+
+   
 
 
 
@@ -189,4 +272,4 @@ const url = 'https://staging.community.fabric.microsoft.com/t5/user/loginpage';
 const username = 'SmartConX_Test';
 const password = 'A!s2d3f4';
 
-login(url, username, password); 
+login(url, username, password);

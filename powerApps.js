@@ -1,39 +1,7 @@
 const { Builder, By,Capabilities, until} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
-//const { assertInterfaceType } = require('graphql');
 
-// async function performChildReply(driver, postMessage) {
-//     const replyButton = await driver.findElement(By.xpath('//*[@id="messageActions"]/div/span'));
-//     await replyButton.click();
-  
-//     await driver.sleep(2000);
-  
-//     const body = await driver.findElement(By.id('mceu_70'));
-//     const iframe = await body.findElement(By.tagName('iframe'));
-  
-//     await driver.switchTo().frame(iframe);
-  
-//     const paragraphElement = await driver.findElement(By.tagName('p'));
-//     await paragraphElement.sendKeys(postMessage);
-  
-//     await driver.sleep(2000);
-    
-//     await driver.switchTo().defaultContent();
-  
-//     const postButton = await driver.findElement(By.id('submitContext_0'));
-//     await driver.executeScript("arguments[0].scrollIntoViewIfNeeded();", postButton);
-//     await postButton.click();
-  
-//     await driver.sleep(3000);
-//   }
-  
-  
-
-
-
-
-
-async function powerApps(url, email, password){
+  async function powerApps(url, email, password){
     const driver = new Builder().forBrowser('chrome').withCapabilities(Capabilities.chrome())
     .setChromeOptions(new chrome.Options().addArguments('--start-maximized')).build();
     try{
