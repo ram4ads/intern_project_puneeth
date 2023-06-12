@@ -37,7 +37,7 @@ async function login(url, username, password) {
     const month = currentDate.getMonth() + 1; 
     const year = currentDate.getFullYear();
 
-    const subjectText = `Puneet-${day}-${month}-${year}`
+    const subjectText = `Puneet testing -${day}-${month}-${year}`
     await subject.sendKeys(subjectText);
     await driver.sleep(2000)
 
