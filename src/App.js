@@ -31,17 +31,18 @@ export default function App() {
   return (
     <div className='container-box'>
      <h2 className="title-of-header">✔ Fecting Data with Graphical api and using react...!😘</h2>
-      <li className="point-to-words">
-      
-      
-        {data && data.messages.items.map(eachMessage =>(<><p className="App-link">id:{eachMessage.id}</p>
-        <p className='subject'>subject:{eachMessage.subject}</p>
-        <p className='content'>Body:{eachMessage.body}</p>
-        <hr/></>
-        
-        
+     <div className='mid-contianer'>
+       <li className="point-to-words">
+            {data && data.messages.items.map(eachMessage =>(
+                <div className='content-box'>
+                  <p className="App-link">id:{eachMessage.id}</p>
+                  <p className='subject'>subject:{eachMessage.subject}</p>
+                  <p className='content'>Body:{eachMessage.body}</p>
+                
+                </div>
         ))}
         </li>
+      </div>
     </div>
   );
 }
